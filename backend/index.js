@@ -1,7 +1,7 @@
 import express from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
-import booksRoute from "./routes/booksRoute.js";
+import journalsRoute from "./routes/JournalsRoute.js";
 import cors from "cors";
 
 const app = express();
@@ -23,10 +23,10 @@ app.use(cors());
 
 app.get("/", (request, response) => {
   console.log(request);
-  return response.status(234).send("Welcome To MERN Stack Tutorial");
+  return response.status(234).send("Welcome To InsightLog App");
 });
 
-app.use("/books", booksRoute);
+app.use("/journals", journalsRoute);
 
 mongoose
   .connect(mongoDBURL)

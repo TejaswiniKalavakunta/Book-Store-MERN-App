@@ -5,20 +5,20 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import BooksTable from "../components/home/BooksTable";
-import BooksCard from "../components/home/BooksCard";
+import JournalsTable from "../components/home/JournalsTable";
+import JournalsCard from "../components/home/JournalsCard";
 
 const Home = () => {
-  const [books, setBooks] = useState([]);
+  const [journals, setJournals] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showType, setShowType] = useState("table");
+  //const [showType, setShowType] = useState("table");
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5555/books")
+      .get("http://localhost:5555/journals")
       .then((response) => {
-        setBooks(response.data.data);
+        setJournals(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -28,8 +28,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <div className="flex justify-center items-center gap-x-4">
+    <div className="h-screen w-screen bg-gray-100 flex flex-col">
+      <div className="p-4 flex-grow">
+        {/* <div className="flex justify-center items-center gap-x-4">
         <button
           className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
           onClick={() => setShowType("table")}
@@ -42,20 +43,15 @@ const Home = () => {
         >
           Card
         </button>
+      </div> */}
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl my-8">Your Entries</h1>
+          <Link to="/journals/create">
+            <MdOutlineAddBox className="text-sky-800 text-4xl" />
+          </Link>
+        </div>
+        {loading ? <Spinner /> : <JournalsCard journals={journals} />}
       </div>
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl my-8">Books List</h1>
-        <Link to="/books/create">
-          <MdOutlineAddBox className="text-sky-800 text-4xl" />
-        </Link>
-      </div>
-      {loading ? (
-        <Spinner />
-      ) : showType === "table" ? (
-        <BooksTable books={books} />
-      ) : (
-        <BooksCard books={books} />
-      )}
     </div>
   );
 };
