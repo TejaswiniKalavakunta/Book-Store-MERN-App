@@ -5,16 +5,26 @@ import CreateJournals from "./pages/CreateJournals";
 import ShowJournal from "./pages/ShowJournal";
 import EditJournal from "./pages/EditJournal";
 import DeleteJournal from "./pages/DeleteJournal";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Layout from "./components/Layout";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/journals/create" element={<CreateJournals />} />
-      <Route path="/journals/details/:id" element={<ShowJournal />} />
-      <Route path="/journals/edit/:id" element={<EditJournal />} />
-      <Route path="/journals/delete/:id" element={<DeleteJournal />} />
-    </Routes>
+    <div>
+      {/* <Register /> */}
+      {/* <Login /> */}
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/journals/create" element={<CreateJournals />} />
+          <Route path="/journals/details/:id" element={<ShowJournal />} />
+          <Route path="/journals/edit/:id" element={<EditJournal />} />
+          <Route path="/journals/delete/:id" element={<DeleteJournal />} />
+        </Routes>
+      </Layout>
+    </div>
   );
 };
 
