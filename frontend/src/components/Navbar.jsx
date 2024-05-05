@@ -13,12 +13,15 @@ const Navbar = () => {
     { id: 1, text: "Home", to: "/" },
     { id: 2, text: "About", to: "/about" },
     { id: 3, text: "Contact", to: "/contact" },
-    { id: 4, text: "Register", to: "/register" },
+    { id: 4, text: "Register", to: "/auth/register" },
     { id: 5, text: "Login", to: "/auth/login" },
   ];
 
   return (
-    <div className="w-full bg-black flex justify-between items-center h-20 mx-auto px-2 text-white fixed top-0 z-50">
+    <div
+      className="w-full bg-black flex justify-between items-center h-20 mx-auto px-2 text-white fixed top-0 z-50"
+      style={{ position: "sticky", top: 0 }}
+    >
       <h1 className="w-1/2 md:w-full text-3xl font-bold text-[#E3C1B4]">
         InsightLog
       </h1>
@@ -28,7 +31,6 @@ const Navbar = () => {
             key={item.id}
             className="p-2 rounded-xl mx-2 cursor-pointer duration-300 hover:text-white ease-in-out hover:scale-110"
           >
-            {/* Use Link for navigation */}
             <Link to={item.to}>{item.text}</Link>
           </li>
         ))}
@@ -51,7 +53,6 @@ const Navbar = () => {
             key={item.id}
             className="p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600"
           >
-            {/* Use Link for navigation */}
             <Link to={item.to}>{item.text}</Link>
           </li>
         ))}

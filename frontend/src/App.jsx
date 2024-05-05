@@ -12,18 +12,16 @@ import Layout from "./components/Layout";
 const App = () => {
   return (
     <div>
-      {/* <Register /> */}
-      {/* <Login /> */}
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/journals/create" element={<CreateJournals />} />
-          <Route path="/journals/details/:id" element={<ShowJournal />} />
-          <Route path="/journals/edit/:id" element={<EditJournal />} />
-          <Route path="/journals/delete/:id" element={<DeleteJournal />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/register" element={<Register />} />
+        <Route path="/journals/create" element={<CreateJournals />} />
+        <Route path="/journals/details/:id" element={<ShowJournal />} />
+        <Route path="/journals/edit/:id" element={<EditJournal />} />
+        <Route path="/journals/delete/:id" element={<DeleteJournal />} />
+      </Routes>
     </div>
   );
 };
